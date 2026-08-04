@@ -58,7 +58,7 @@ aut: [{name: "honahuku", file-as: "honahuku"}, {name: "nirila", file-as: "nirila
 # a-pbl, pbl: 出版社（発行所）
 # pbl: TechBooster
 # a-prt, prt: 印刷所
-# prt: TechBooster
+prt: 日光企画
 # a-red, red: 項目の枠組起草者
 # a-rev, rev: 評論者
 # a-spn, spn: 援助者
