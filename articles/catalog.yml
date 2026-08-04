@@ -1,8 +1,11 @@
 PREDEF:
+  - preface.re
 
 CHAPS:
   - honahuku.re
+  - 01-nirila-internet.re
 
 APPENDIX:
 
 POSTDEF:
+  - contributors.re

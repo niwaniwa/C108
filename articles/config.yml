@@ -17,15 +17,15 @@ review_version: 5.0
 # inherit: ["A.yml", "B.yml"]
 
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
-bookname: honahuku-vrchat-distributed-systems
+bookname: vrc-infra-anthology
 # 記述言語。省略した場合はja
 language: ja
 
 # 書名
-booktitle: {name: "VRChatで分散システム集会を2年ほど続けている", file-as: "VRChatでぶんさんシステムしゅうかいを2ねんほどつづけている"}
+booktitle: {name: "ぶいちゃインフラ合同", file-as: "ぶいちゃインフラごうどう"}
 
 # 著者名。「, 」で区切って複数指定できる
-aut: [{name: "ほなふく", file-as: "ほなふく"}]
+aut: [{name: "honahuku", file-as: "honahuku"}, {name: "nirila", file-as: "nirila"}]
 
 # 以下はオプション
 # 以下はオプション(autと同じように配列書式で複数指定可能)。
@@ -77,7 +77,7 @@ date: 2026-08-03
 history: [["2026-08-03 初版"]]
 # 権利表記(配列で複数指定可)
 # rights: (C) 2016 Re:VIEW Developers
-rights: (C) 2026 ほなふく
+rights: (C) 2026 honahuku, nirila
 # description: 説明
 # subject: 短い説明用タグ(配列で複数指定可)
 # type: 書籍のカテゴリーなど(配列で複数指定可)
@@ -90,7 +90,7 @@ rights: (C) 2026 ほなふく
 debug: null
 
 # 固有IDに使用するドメイン。省略した場合は時刻に基づくランダムUUIDが入る
-urnid: urn:uuid:honahuku-vrchat-distributed-systems-2026
+urnid: urn:uuid:vrc-infra-anthology-2026
 #
 # ISBN。省略した場合はurnidが入る
 # isbn: null
