@@ -215,8 +215,10 @@ $ docker compose up
 または
 
 ```
-$ docker compose run -e REVIEW_CONFIG_FILE=config.yml --rm review npm run pdf
+$ docker compose run -e REVIEW_CONFIG_FILE=config.yml --rm review /bin/bash -ci './setup.sh && npm run pdf'
 ```
+
+初回実行時はDockerイメージと依存パッケージを取得するため、時間がかかります。生成されたPDFは `articles/` に出力されます。
 
 紙版と電子版では以下のような違いがあります。
 
