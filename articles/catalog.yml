@@ -1,5 +1,6 @@
 PREDEF:
   - preface.re
+  - contributors.re
 
 CHAPS:
   - honahuku.re
@@ -8,4 +9,3 @@ CHAPS:
 APPENDIX:
 
 POSTDEF:
-  - contributors.re

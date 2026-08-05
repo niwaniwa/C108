@@ -197,6 +197,9 @@
 % 奥付を必ず偶数開始
 \renewcommand{\reviewcolophon}[0]{\clearoddpage}
 
+% Author profile icons are displayed inline beside the author's name.
+\renewcommand{\reviewicon}[1]{\raisebox{-0.8zw}{\includegraphics[height=2.5zw]{#1}}}
+
 \tracingpatches
 \ifdefined\review@colophon
   \ifthenelse{\isundefined{\review@colophonfile}}{%
