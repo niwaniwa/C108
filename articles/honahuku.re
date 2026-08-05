@@ -1,6 +1,6 @@
 = VRChatで分散システム集会を2年ほど続けている
 
-著者：honahuku
+著者：@<icon>{honahuku} honahuku
 
 == はじめに
 
