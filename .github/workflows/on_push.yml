@@ -10,6 +10,15 @@ jobs:
     # https://github.com/actions/checkout
     - name: checkout source
       uses: actions/checkout@v4.2.2
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: npm
+    - name: Install npm dependencies
+      run: npm ci
+    - name: Check manuscript wording with prh
+      run: npm run check:prh
     # Build Artifacts
     - name: Build distribution file
       uses: TechBooster/ReVIEW-build-artifact-action@master

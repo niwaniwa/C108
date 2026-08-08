@@ -48,6 +48,9 @@ module.exports = grunt => {
 			}
 		},
 		shell: {
+			checkPrh: {
+				command: "node scripts/check-prh.js"
+			},
 			checkTodo: {
 				command: "node scripts/check-todo.js"
 			},
@@ -163,7 +166,7 @@ module.exports = grunt => {
 	});
 
 	function generateTask(target) {
-		const tasks = ["shell:checkTodo", "clean:review"];
+		const tasks = ["shell:checkPrh", "shell:checkTodo", "clean:review"];
 		if (target === "pdf") tasks.push("clean:pdfOutput");
 		if (target === "epub") tasks.push("clean:epubOutput");
 		tasks.push("shell:preprocess", `shell:compile2${target}`);
