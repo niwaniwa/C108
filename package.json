@@ -28,6 +28,7 @@
     "web": "grunt web",
     "idgxml": "grunt idgxmlmaker",
     "vivliostyle": "grunt vivliostyle",
+    "check:todo": "node scripts/check-todo.js",
     "test": "npm run html"
   },
   "dependencies": {},
