@@ -1,7 +1,7 @@
 
 = VRChatコミュニティを支えるMisskeyインフラ
 
-著者：nirila
+著者：@<icon>{nirila} nirila
 
 == Misskeyとは
 
