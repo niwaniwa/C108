@@ -6,12 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # uses v3 Stable version
+    # Uses the current stable major version
     # https://github.com/actions/checkout
     - name: checkout source
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v6
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: 20
         cache: npm
@@ -24,7 +24,7 @@ jobs:
       uses: TechBooster/ReVIEW-build-artifact-action@master
     # Upload Distribution file
     - name: Upload distribution file to github artifacts
-      uses: actions/upload-artifact@v4.6.1
+      uses: actions/upload-artifact@v6
       with:
         name: Output documents
         path: ./articles/*.pdf
