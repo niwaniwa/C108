@@ -13,13 +13,32 @@ bundle install
 npm ci
 ```
 
-## PDF
+## 成果物
+
+生成物は形式別のサブディレクトリを作らず、すべてリポジトリ直下の `output/` に出力します。`output/` はGitの管理対象外です。
+
+```text
+output/
+├── vrc-infra-anthology-print.pdf
+├── vrc-infra-anthology-ebook.pdf
+└── vrc-infra-anthology.epub
+```
+
+## 印刷用PDF
 
 ```sh
 npm run pdf
 ```
 
-`articles/vrc-infra-anthology.pdf` が生成されます。
+`output/vrc-infra-anthology-print.pdf` が生成されます。
+
+## 電子書籍用PDF
+
+```sh
+REVIEW_CONFIG_FILE=config-ebook.yml npm run pdf
+```
+
+`output/vrc-infra-anthology-ebook.pdf` が生成されます。印刷用PDFとは別名なので、両方を同時に保持できます。
 
 ## EPUB
 
@@ -27,18 +46,19 @@ npm run pdf
 npm run epub
 ```
 
-`articles/vrc-infra-anthology.epub` が生成されます。
+`output/vrc-infra-anthology.epub` が生成されます。
 
-## PDFとEPUBを両方残す
+## まとめて生成する
 
-`npm run pdf` と `npm run epub` は、実行前のクリーンタスクで既存のPDFとEPUBをどちらも削除します。両方を同時に残す場合は、PDFの生成後、クリーンタスクを通さずEPUBを生成します。
+各コマンドの成果物は別名で `output/` に残るため、順番に実行できます。
 
 ```sh
 npm run pdf
-(cd articles && bundle exec rake epub)
+REVIEW_CONFIG_FILE=config-ebook.yml npm run pdf
+npm run epub
 ```
 
-この手順はDev Container内で実行し、PDFとEPUBの生成、およびEPUBのZIP整合性を確認しています。
+PDF出力の検証では、印刷用と電子書籍用の両方を生成します。
 
 ## その他の出力
 
@@ -50,15 +70,15 @@ npm run html  # articles/*.html
 
 利用可能なコマンドの一覧と実体は `package.json` と `Gruntfile.js` を参照してください。
 
-## 設定ファイルを切り替える
+## その他の設定ファイルを使う
 
-通常は `articles/config.yml` を使用します。別の設定を使う場合は `REVIEW_CONFIG_FILE` を指定します。
+通常は `articles/config.yml` を使用します。`REVIEW_CONFIG_FILE` に別の設定を指定した場合、その設定ファイル名を基にPDFの接尾辞を決めます。
 
 ```sh
-REVIEW_CONFIG_FILE=config-ebook.yml npm run pdf
+REVIEW_CONFIG_FILE=config-example.yml npm run pdf
 ```
 
-`REVIEW_CONFIG_FILE` は `articles/` から見たファイル名です。
+この例では `output/vrc-infra-anthology-example.pdf` が生成されます。`REVIEW_CONFIG_FILE` は `articles/` から見たファイル名です。
 
 ## EPUB/Web用CSSを更新する
 
@@ -72,7 +92,7 @@ REVIEW_CONFIG_FILE=config-ebook.yml npm run pdf
 
 ## Dev Containerを使わない場合
 
-ホストにDockerがある場合は、Re:VIEW 5.9イメージを使う既存スクリプトでPDFを生成できます。
+ホストにDockerがある場合は、Re:VIEW 5.9イメージを使う既存スクリプトで印刷用PDFを生成できます。
 
 ```sh
 ./build-in-docker.sh

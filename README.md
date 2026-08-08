@@ -12,7 +12,7 @@ npm ci
 npm run pdf
 ```
 
-PDFは `articles/vrc-infra-anthology.pdf` に生成されます。EPUBの生成や、両方の成果物を残す方法は[ビルドガイド](docs/build.md)を参照してください。
+印刷用PDFは `output/vrc-infra-anthology-print.pdf` に生成されます。電子書籍用PDFやEPUBの生成方法は[ビルドガイド](docs/build.md)を参照してください。
 
 ## ドキュメント
 

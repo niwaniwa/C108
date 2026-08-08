@@ -1,7 +1,9 @@
 let fs = require("fs");
+let path = require("path");
 let yaml = require("js-yaml");
 
 const articles = "articles";
+const output = "output";
 const bookConfig = yaml.load(fs.readFileSync(`${articles}/config.yml`, "utf8"));
 
 const reviewPrefix = process.env["REVIEW_PREFIX"] || "bundle exec ";
@@ -18,6 +20,12 @@ const reviewVivliostyle = `${reviewPrefix}rake vivliostyle ${reviewPostfix}`;
 
 const reviewContentDir = bookConfig.contentdir || '.'
 
+function pdfVariant() {
+	const configName = path.basename(reviewConfig, path.extname(reviewConfig));
+	if (configName === "config") return "print";
+	return configName.replace(/^config-?/, "") || configName;
+}
+
 module.exports = grunt => {
 	grunt.initConfig({
 		clean: {
@@ -31,6 +39,12 @@ module.exports = grunt => {
 					`${articles}/*.txt`,
 					`${articles}/webroot`
 				]
+			},
+			pdfOutput: {
+				src: [`${output}/${bookConfig.bookname}-${pdfVariant()}.pdf`]
+			},
+			epubOutput: {
+				src: [`${output}/${bookConfig.bookname}.epub`]
 			}
 		},
 		shell: {
@@ -125,8 +139,34 @@ module.exports = grunt => {
 		}
 	});
 
+	function exportArtifact(source, destination) {
+		fs.mkdirSync(output, { recursive: true });
+		fs.renameSync(source, destination);
+		grunt.log.ok(`exported ${destination}`);
+	}
+
+	grunt.registerTask("exportPdf", function() {
+		exportArtifact(
+			`${articles}/${bookConfig.bookname}.pdf`,
+			`${output}/${bookConfig.bookname}-${pdfVariant()}.pdf`
+		);
+	});
+
+	grunt.registerTask("exportEpub", function() {
+		exportArtifact(
+			`${articles}/${bookConfig.bookname}.epub`,
+			`${output}/${bookConfig.bookname}.epub`
+		);
+	});
+
 	function generateTask(target) {
-		return ["clean", "shell:preprocess", `shell:compile2${target}`];
+		const tasks = ["clean:review"];
+		if (target === "pdf") tasks.push("clean:pdfOutput");
+		if (target === "epub") tasks.push("clean:epubOutput");
+		tasks.push("shell:preprocess", `shell:compile2${target}`);
+		if (target === "pdf") tasks.push("exportPdf");
+		if (target === "epub") tasks.push("exportEpub");
+		return tasks;
 	}
 
 	grunt.registerTask(

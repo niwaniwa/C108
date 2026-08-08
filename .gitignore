@@ -1,4 +1,5 @@
 node_modules/
+output/
 Gemfile.lock
 *.pdf
 .sass-cache/
