@@ -13,6 +13,29 @@
 
 TeXの導入をしない場合でもHTMLやEPUBの出力は可能です。Dockerコンテナでビルドすることもできます。
 
+### Dev Container内でPDFとEPUBをビルドする
+
+このリポジトリのDev Containerには、Re:VIEW 5.9とPDF生成に必要なTeX環境が含まれています。
+リポジトリのルートで依存パッケージを準備し、次のコマンドを実行します。
+
+```sh
+bundle install
+npm ci
+npm run pdf
+npm run epub
+```
+
+成果物は `articles/vrc-infra-anthology.pdf` と `articles/vrc-infra-anthology.epub` に生成されます。
+ただし、各 `npm run` はビルド前に既存のPDFとEPUBを削除するため、上記の順番では最後に生成したEPUBだけが残ります。
+両方の成果物を同時に残す場合は、PDFのビルド後にクリーンタスクを通さずEPUBを生成します。
+
+```sh
+npm run pdf
+(cd articles && bundle exec rake epub)
+```
+
+Dev Container作成時には `npm ci` が自動実行されます。すでに依存パッケージが揃っている場合は、準備コマンドを省略できます。
+
 ## Re:VIEWの使い方は？
 
 [技術書をかこう！〜はじめてのRe:VIEW〜改訂版](https://github.com/TechBooster/C89-FirstStepReVIEW-v2)
