@@ -1,10 +1,10 @@
 PREDEF:
   - preface.re
-  - contributors.re
 
 CHAPS:
   - honahuku.re
   - 01-nirila-internet.re
+  - tsukuyomi.re
 
 APPENDIX:
 
