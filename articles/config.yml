@@ -22,7 +22,7 @@ bookname: vrc-infra-anthology
 language: ja
 
 # 書名
-booktitle: {name: "ぶいちゃインフラ合同", file-as: "ぶいちゃインフラごうどう"}
+booktitle: {name: "ぶいちゃインフラ合同！", file-as: "ぶいちゃインフラごうどう"}
 
 # 著者名。「, 」で区切って複数指定できる
 aut: [{name: "honahuku", file-as: "honahuku"}, {name: "nirila", file-as: "nirila"}]

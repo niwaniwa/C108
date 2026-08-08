@@ -2,6 +2,7 @@
 
 @<icon>{honahuku} @<b>{honahuku}
 
+TODO: 書く。
 第1章「VRChatで分散システム集会を2年ほど続けている」を執筆。
 
 //blankline
