@@ -20,7 +20,9 @@
 
 わかっているのは、ツクヨミが「日本最大の仮想空間」とされ、総ユーザー数が1億人に達しているとのことです。
 
-山下監督によれば、ツクヨミは特定のVRサービスをモデルにしたものではなく、イラスト投稿、動画配信、ライブ配信、オンラインゲームなど、作品を発表して評価を受ける文化をひとつに集約したプラットフォームとのことです。
+山下監督によれば、ツクヨミは特定のVRサービスをモデルにしたものではなく、イラスト投稿、動画配信、ライブ配信、オンラインゲームなど、作品を発表して評価を受ける文化をひとつに集約したプラットフォームとのことです@<fn>{tsukuyomi-interview}。
+
+//footnote[tsukuyomi-interview][PANORA「映画『超かぐや姫！』監督&アニメーションプロデューサーインタビュー ツクヨミのモデルはVRChat……じゃなかった！」：@<href>{https://panora.tokyo/archives/133212}]
 
 『サマーウォーズ』のOZとも立ち位置が違います。
 行政まで統合されたOZに対して、ツクヨミはまだ「遊び場」です。
@@ -85,7 +87,9 @@ SENGOKUやSETUNAといった複数のモードが同じ基盤で動き、クエ�
 ワールドのシミュレーション、アバターの同期、ゲーム処理などをまとめた仮定です。
 
 比較対象には、2UのDell PowerEdge R7725を使います。
-デュアルAMD EPYC構成で最大384コア、最大重量は約31.8kgです。
+デュアルAMD EPYC構成で最大384コア、最大重量は約31.8kgです@<fn>{r7725}。
+
+//footnote[r7725][Dell PowerEdge R7725 Installation and Service Manual：@<href>{https://www.dell.com/support/manuals/en-us/poweredge-r7725/per7725_ism/poweredge-r7725-system-configurations-and-features}]
 CPUを常時100%まで使い切る構成は余裕がないため、1台あたり250コアを有効分として数えます。
 
 学術計算用のHPCクラスターなら、CPUを100%近くまで回し続けることもあるでしょう。
@@ -109,15 +113,19 @@ CPUサーバー600台で済んだら、むしろ話がうますぎるかもし�
 ツクヨミにはイラスト、動画、アバター、ワールドなどのユーザー生成コンテンツ（UGC）が保存されます。
 1アカウントあたり平均2GBと控えめに仮定しても、1億アカウントで200PBに達します。
 
-ストレージノードには、24本の3.5インチドライブを搭載できる2UのPowerEdge R760xd2を想定します。
+ストレージノードには、24本の3.5インチドライブを搭載できる2UのPowerEdge R760xd2を想定します@<fn>{r760xd2}。
 30TBのドライブを24本積むと物理容量は720TBです。
 冗長化や空き容量を考慮し、実効容量を80%とすれば、1台あたり576TBを使えます。
 200PBを保存するには約348台、ラック数では約20ラックが必要です。
 
+//footnote[r760xd2][Dell PowerEdge R760xd2 Installation and Service Manual：@<href>{https://www.dell.com/support/manuals/en-us/poweredge-r760xd2/r760xd2_ism/system-weight}]
+
 ヤチヨの処理、感情推定、推薦、モデレーションにはGPUも必要でしょう。
 必要量は作中の設定だけでは決められないため、ここではNVIDIA DGX H200相当を32台と仮定します。
-1台は8U、最大重量は約130.45kg、最大消費電力は約10.2kWです。
+1台は8U、最大重量は約130.45kg、最大消費電力は約10.2kWです@<fn>{dgxh200}。
 4台ずつ収容すれば8ラックになります。
+
+//footnote[dgxh200][NVIDIA DGX H100/H200 User Guide：@<href>{https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html}]
 
 主要な機器だけで980台、62ラックです。
 ネットワーク機器、管理用機器、予備機を加えると70ラックを超えます。
@@ -137,7 +145,9 @@ R7725を18台積むと、サーバーだけで約572kgになります。
 ラック本体を150kgと仮定すれば、合計は約722kgです。
 設置面積が600mm×1,200mmなら、床面積あたりの荷重は約1,003kg/m²になります。
 
-一方、建築基準法施行令第85条では、住宅の居室の床を構造計算する際の積載荷重を1,800N/m²としています。
+一方、建築基準法施行令第85条では、住宅の居室の床を構造計算する際の積載荷重を1,800N/m²としています@<fn>{building-code-85}。
+
+//footnote[building-code-85][e-Gov法令検索「建築基準法施行令」第85条：@<href>{https://laws.e-gov.go.jp/law/325CO0000000338}]
 重量換算では約184kgf/m²です。
 もちろん、この値を超えれば直ちに床が抜けるという意味ではありません。
 梁の位置や荷重の分散を含め、構造設計者による判断が必要です。
@@ -170,7 +180,9 @@ CPUに900kW、ストレージに348kW、GPUに224kWが必要です。
 データセンターでは、冷却設備、UPS、ファン、ポンプにも電力を使います。
 施設全体の電力効率を示すPUEを1.3とすれば、必要な受電電力は約2.2MWです。
 
-東京電力の一般家庭向け従量電灯Bは、原則として10〜60Aの契約です。
+東京電力の一般家庭向け従量電灯Bは、原則として10〜60Aの契約です@<fn>{tepco-metered-b}。
+
+//footnote[tepco-metered-b][東京電力エナジーパートナー「従量電灯B・C」：@<href>{https://www.tepco.co.jp/ep/private/plan/old01.html}]
 力率を1とする単純計算では、60Aを6kVA相当とみなすと、2.2MWは約367世帯分の契約容量にあたります。
 部屋を367戸借りれば済むという話ではありません。
 建物への引き込み、受変電設備、幹線、分電盤のすべてが住宅向けの想定を超えます。
@@ -269,7 +281,9 @@ CIAを動かせるほどの後ろ盾があるなら、電力会社との特別�
 実効単価を0.04〜0.06ドル/vCPU時、月730時間として計算すると、リアルタイム処理は月171万〜256万ドルです。
 1ドル150円なら、約2.6億〜3.8億円になります。
 
-ここでは、AWS Gravitonのような大規模向けCPUを使い、ワールドのインスタンス、KASSEN、マッチングまでまとめて動かす想定です。
+ここでは、AWS Gravitonのような大規模向けCPUを使い、ワールドのインスタンス、KASSEN、マッチングまでまとめて動かす想定です@<fn>{aws-graviton}。
+
+//footnote[aws-graviton][AWS「Amazon EC2 instance types」：@<href>{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}]
 EC2は秒や時間単位で増減できるので、ピーク時の100万人分を24時間ずっと立てておく必要はありません。
 ここはクラウドのありがたいところです。
 もっとも、世界のどこかでは常に誰かが遊んでいそうなので、どこまで落とせるかは何ともいえません。
@@ -278,7 +292,9 @@ EC2は秒や時間単位で増減できるので、ピーク時の100万人分�
 しかも、これはワールド、KASSEN、マッチングなどを動かす計算部分だけです。
 
 もちろん、AWSを定価のオンデマンド料金だけで使う想定ではありません。
-EC2 Instance Savings Plansで一定量の利用を約束すれば、オンデマンド料金から最大72%の割引を受けられます。
+EC2 Instance Savings Plansで一定量の利用を約束すれば、オンデマンド料金から最大72%の割引を受けられます@<fn>{aws-savings-plans}。
+
+//footnote[aws-savings-plans][AWS「Savings Plans FAQ」：@<href>{https://aws.amazon.com/savingsplans/faqs/}]
 ツクヨミ級なら、長期契約や個別契約も結ぶはずです。
 
 そもそも作中の時代にドル円相場がどうなっているかもわかりません。
@@ -286,21 +302,27 @@ EC2 Instance Savings Plansで一定量の利用を約束すれば、オンデマ
 
 200PBのUGCを、全部S3 Standardへ置く必要はありません。
 頻繁に使うアバターや人気ワールドを10%、少し古いデータを30%、ほとんど参照されないデータやバックアップを60%とします。
-S3のストレージクラスを使い分け、平均単価を0.006〜0.012ドル/GB月まで下げられたと仮定します。
+S3のストレージクラスを使い分け@<fn>{s3-storage-classes}、平均単価を0.006〜0.012ドル/GB月まで下げられたと仮定します。
+
+//footnote[s3-storage-classes][AWS「Understanding and managing Amazon S3 storage classes」：@<href>{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}]
 それでも、保存料金だけで月120万〜240万ドル、約1.8億〜3.6億円です。
 
 平均30万人が接続し、1人あたりの下り通信量を300kbpsとすると、帯域は90Gbps、ひと月の転送量は約30PBです。
 大口契約によって0.02〜0.05ドル/GBまで交渉できたと仮定しても、月60万〜150万ドル、約0.9億〜2.3億円になります。
 
 ツクヨミ級なら、CloudFrontの通常料金表をそのまま払うことはないでしょう。
-Custom Pricingで交渉して、それでも月に約1億〜2.3億円！
+Custom Pricingで交渉して@<fn>{cloudfront-custom-pricing}、それでも月に約1億〜2.3億円！
 やはりネットワークが重い。
+
+//footnote[cloudfront-custom-pricing][AWS「Amazon CloudFront features」：@<href>{https://aws.amazon.com/cloudfront/features/}]
 
 感情推定、推薦、モデレーションのために、P5.48xlarge相当を16〜32台使い続けると仮定します。
 1台あたり37.76ドル/時なら、月44万〜88万ドル、約0.7億〜1.3億円です。
 
 P5.48xlargeは、東京リージョンでH100を8基積む構成です。
-Capacity Blocksの価格例をもとにしていますが、そもそもヤチヨがどんなロジックで動いているのかは作中に説明がありません。
+Capacity Blocksの価格例をもとにしています@<fn>{aws-capacity-blocks}が、そもそもヤチヨがどんなロジックで動いているのかは作中に説明がありません。
+
+//footnote[aws-capacity-blocks][AWS「Amazon EC2 Capacity Blocks for ML Pricing」：@<href>{https://aws.amazon.com/ec2/capacityblocks/pricing/}]
 GPUが32台で足りるのか。
 じつは桁が違うのか。
 ここだけは、考えようにも材料が足りません！
