@@ -1,2 +1,5 @@
 * text=auto eol=lf
 *.sh text eol=lf
+articles/images/b5-hyoushi.psd filter=lfs diff=lfs merge=lfs -text
+articles/images/b5-hyoushi.png filter=lfs diff=lfs merge=lfs -text
+articles/images/VRChat_*.png filter=lfs diff=lfs merge=lfs -text
