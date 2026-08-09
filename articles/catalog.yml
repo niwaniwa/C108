@@ -2,10 +2,10 @@ PREDEF:
   - preface.re
 
 CHAPS:
-  - honahuku.re
+  - 01-distributed-systems-meetup.re
   - 01-nirila-internet.re
-  - tsukuyomi.re
-  - 02-nirila-misskey.re
+  - 03-tsukuyomi-in-apartment.re
+  - 04-nirila-misskey.re
 
 APPENDIX:
 
