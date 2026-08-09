@@ -56,7 +56,7 @@ aut: [{name: "honahuku", file-as: "honahuku"}, {name: "nirila", file-as: "nirila
 # a-oth, oth: その他
 # a-pht, pht: 撮影責任者
 # a-pbl, pbl: 出版社（発行所）
-# pbl: TechBooster
+pbl: ほなふくにりら
 # a-prt, prt: 印刷所
 prt: 日光企画
 # a-red, red: 項目の枠組起草者
