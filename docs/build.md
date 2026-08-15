@@ -13,9 +13,9 @@ bundle install
 npm ci
 ```
 
-## 表記を確認する
+## 校正
 
-Re:VIEW原稿（`articles/**/*.re`）はprhで表記を確認できます。
+Re:VIEW原稿（`articles/**/*.re`）はprhで機械的な校正ができます。
 
 ```sh
 npm run check:prh
